@@ -4,5 +4,6 @@ export default {
 	plugins: ["prettier-plugin-tailwindcss"],
 	trailingComma: "all",
 	useTabs: true,
+	tabWidth: 2,
 	tailwindConfig: "./tailwind.config.ts",
 };
