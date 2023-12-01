@@ -39,16 +39,12 @@ function Document({
 }
 
 function Layout({ children }: { children?: React.ReactNode }) {
-	return (
-		<div className="min-h-screen max-w-full">
-			<div className="p-8">{children}</div>
-		</div>
-	);
+	return <div className="min-h-screen max-w-full">{children}</div>;
 }
 
 export default function App() {
 	return (
-		<Document>
+		<Document title="Remix run project">
 			<Outlet />
 		</Document>
 	);
