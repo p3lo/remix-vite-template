@@ -1,3 +1,5 @@
+import type { LoaderFunctionArgs } from "@remix-run/node";
+
 import {
 	Links,
 	LiveReload,
@@ -10,7 +12,15 @@ import {
 } from "@remix-run/react";
 
 import DefaultErrorBoundary from "~/components/DefaultErrorBoundary";
+
 import "./tailwind.css";
+import { db } from "./db/db.server";
+
+export const loader = async ({}: LoaderFunctionArgs) => {
+	const data = await db.query.users.findMany();
+	console.log(data);
+	return null;
+};
 
 function Document({
 	children,
