@@ -1,9 +1,7 @@
-/* eslint-disable unicorn/prefer-module */
-/** @type {import("prettier").Config} */
 export default {
-	plugins: ["prettier-plugin-tailwindcss"],
+	semi: false,
+	singleQuote: true,
 	trailingComma: "all",
-	useTabs: true,
-	tabWidth: 2,
-	tailwindConfig: "./tailwind.config.ts",
+	arrowParens: "avoid",
+	plugins: ["prettier-plugin-tailwindcss"],
 };

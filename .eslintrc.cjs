@@ -1,73 +1,48 @@
-/* eslint-disable unicorn/prefer-module */
+const vitestFiles = ["app/**/__tests__/**/*", "app/**/*.{spec,test}.*"];
+
 module.exports = {
-	root: true,
-	parser: "@typescript-eslint/parser",
-	plugins: [
-		"@typescript-eslint",
-		"import",
-		"jsx-a11y",
-		"prettier",
-		"promise",
-		"react-hooks",
-		"react",
-		"unicorn",
-	],
 	extends: [
-		"plugin:@typescript-eslint/recommended",
-		"plugin:import/errors",
-		"plugin:import/typescript",
-		"plugin:import/warnings",
-		"plugin:jsx-a11y/recommended",
-		"plugin:prettier/recommended",
-		"plugin:promise/recommended",
-		"plugin:react-hooks/recommended",
-		"plugin:react/recommended",
-		"plugin:unicorn/recommended",
+		"@remix-run/eslint-config",
+		"@remix-run/eslint-config/node",
+		"prettier",
 	],
-	settings: {
-		react: { version: "detect" },
-		"import/resolver": { typescript: {} },
-	},
+	plugins: ["simple-import-sort"],
 	rules: {
-		"@typescript-eslint/explicit-module-boundary-types": "off",
-		"no-unused-vars": "off",
-		"no-var": "off",
-		"prefer-const": "off",
-		"react/prop-types": "off",
-		"react/button-has-type": "error",
-		"react/function-component-definition": [
-			"error",
+		"@typescript-eslint/consistent-type-imports": [
+			"warn",
 			{
-				namedComponents: "function-declaration",
-				unnamedComponents: "arrow-function",
+				prefer: "type-imports",
+				disallowTypeAnnotations: true,
+				fixStyle: "inline-type-imports",
 			},
 		],
-		"react/jsx-uses-react": "off",
-		"react/react-in-jsx-scope": "off",
-		"react-hooks/rules-of-hooks": "error",
-		"react-hooks/exhaustive-deps": "error",
-		"unicorn/filename-case": "off",
-		"unicorn/no-null": "off",
-		"unicorn/prefer-node-protocol": "off",
-		"unicorn/prevent-abbreviations": "off",
-		"import/order": [
-			"error",
+		"simple-import-sort/imports": [
+			"warn",
 			{
-				alphabetize: {
-					order: "asc",
-				},
 				groups: [
-					"type",
-					"builtin",
-					"external",
-					"internal",
-					"parent",
-					["sibling", "index"],
+					["^\\u0000", "^(react|react-dom)", "^node:", "^@?\\w", "^", "^\\."],
 				],
-				"newlines-between": "always",
-				pathGroups: [],
-				pathGroupsExcludedImportTypes: [],
 			},
 		],
+		"simple-import-sort/exports": "warn",
+		"import/no-duplicates": ["warn", { "prefer-inline": true }],
 	},
+	overrides: [
+		{
+			extends: ["@remix-run/eslint-config/jest-testing-library"],
+			files: vitestFiles,
+			rules: {
+				"testing-library/no-await-sync-events": "off",
+				"jest-dom/prefer-in-document": "off",
+			},
+			// we're using vitest which has a very similar API to jest
+			// (so the linting plugins work nicely), but it means we have to explicitly
+			// set the jest version.
+			settings: {
+				jest: {
+					version: 28,
+				},
+			},
+		},
+	],
 };
