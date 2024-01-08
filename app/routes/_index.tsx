@@ -7,7 +7,7 @@ export const meta: MetaFunction = () => {
   ]
 }
 
-export const loader = async ({}: LoaderFunctionArgs) => {
+export const loader = async ({ request }: LoaderFunctionArgs) => {
   console.log('Hello from loader!')
   return { message: 'Hello World!' }
 }

@@ -1,18 +1,18 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {
-  Link,
-  isRouteErrorResponse,
-  useRouteError,
-  type ErrorResponse,
-} from '@remix-run/react'
-import {
   HiExclamationCircle,
-  HiMinusCircle,
   HiExclamationTriangle,
-  HiShieldExclamation,
   HiMagnifyingGlass,
+  HiMinusCircle,
+  HiShieldExclamation,
 } from 'react-icons/hi2'
+import {
+  type ErrorResponse,
+  isRouteErrorResponse,
+  Link,
+  useRouteError,
+} from '@remix-run/react'
 
 export default function ErrorBoundary() {
   const error = useRouteError()

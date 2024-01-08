@@ -1,5 +1,5 @@
+import { renderToPipeableStream } from 'react-dom/server'
 import { PassThrough } from 'node:stream'
-
 import {
   type AppLoadContext,
   createReadableStreamFromReadable,
@@ -7,7 +7,6 @@ import {
 } from '@remix-run/node'
 import { RemixServer } from '@remix-run/react'
 import { isbot } from 'isbot'
-import { renderToPipeableStream } from 'react-dom/server'
 
 const ABORT_DELAY = 5000
 

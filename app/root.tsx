@@ -1,22 +1,19 @@
+import './tailwind.css'
 import type { LoaderFunctionArgs } from '@remix-run/node'
-
 import {
+  isRouteErrorResponse,
   Links,
   LiveReload,
   Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
-  isRouteErrorResponse,
   useRouteError,
 } from '@remix-run/react'
-
 import DefaultErrorBoundary from '~/components/DefaultErrorBoundary'
-
-import './tailwind.css'
 import { db } from './db/db.server'
 
-export const loader = async ({}: LoaderFunctionArgs) => {
+export const loader = async ({ request }: LoaderFunctionArgs) => {
   const data = await db.query.users.findMany()
   console.log(data)
   return null
