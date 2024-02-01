@@ -3,7 +3,6 @@ import type { LoaderFunctionArgs } from '@remix-run/node'
 import {
   isRouteErrorResponse,
   Links,
-  LiveReload,
   Meta,
   Outlet,
   Scripts,
@@ -38,7 +37,6 @@ function Document({
       <body>
         <Layout>{children}</Layout>
         <ScrollRestoration />
-        <LiveReload />
         <Scripts />
       </body>
     </html>

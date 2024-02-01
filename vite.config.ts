@@ -11,8 +11,8 @@ export default defineConfig({
     remixDevTools(),
     TurboConsole(),
     morganPlugin(),
-    remix(remixConfig),
     tsconfigPaths(),
+    remix(remixConfig),
   ],
   server: {
     // Automatically opens up the browser when we run npm run dev
