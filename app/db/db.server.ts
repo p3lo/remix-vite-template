@@ -15,6 +15,7 @@ export const client = createClient({
   url: TURSO_LOCAL_FILE,
   authToken: TURSO_DB_AUTH_TOKEN,
   syncUrl: TURSO_DB_URL,
+  syncInterval: 60
 })
-await client.sync()
+// await client.sync()
 export const db = drizzle(client, { schema })
